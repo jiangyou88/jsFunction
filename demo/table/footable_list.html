@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" description="">
+	<script type="text/javascript" src="../scripts/js/common/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../scripts/css/common/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../scripts/css/common/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../scripts/css/common/font-awesome-ie7.min.css">
+	<link rel="stylesheet" type="text/css" href="../scripts/css/common/style.css">
+	<link rel="stylesheet" type="text/css" href="../scripts/css/plugins/jsTree/style.min.css">
+	<script type="text/javascript" src="../scripts/js/common/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../scripts/js/common/jquery.slimscroll.min.js"></script>
+	<script type="text/javascript" src="../scripts/js/common/jsTools.js"></script>
+	<link rel="stylesheet" type="text/css" href="../scripts/css/plugins/footable/footable.core.css">
+	<script type="text/javascript" src="../scripts/js/plugins/footable/footable.all.min.js"></script>
+	<script type="text/javascript" src="../scripts/js/plugins/knockout/knockout.js"></script>
+	<script type="text/javascript" src="../scripts/js/plugins/footable_bootstrap/footable_json.js"></script>
+	<title>JsTree</title>
+</head>
+<!-- class="footable table table-stripped toggle-arrow-tiny"  -->
+<body class="gray-bg top-navigation">
+	<div id="wrapper" class="wrapper wrapper-content animated fadeInRight gray-bg" style="padding: 0px 0px;">
+		<div id="page-wrapper" class="gray-bg">
+			<div class="row border-bottom white-bg">
+				<nav class="navbar navbar-static-top" role="navigation">
+					<div class="navbar-header" style="width:40%;">
+						<img src="../scripts/img/logo-small.png" class="navbar-brand" style="padding: 10px 5px;" />
+						<a href="#" class="navbar-brand" style="font-weight: 600;font-size: 16px;padding: 15px 5px;">自定义后台主题UI框架</a>
+					</div>
+					<div class="navbar-collapse collapse" id="navbar">
+						<ul class="nav navbar-nav">
+							<li class="active">
+								<a aria-expanded="false" role="button" href="../demo/echarts.html">echarts图表</a>
+							</li>
+							<li class="dropdown">
+								<a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> 表格插件 <span class="caret"></span></a>
+								<ul role="menu" class="dropdown-menu">
+									<li><a href="../demo/footable.html">footable表格(bootstrap)</a>
+									</li>
+									<li><a href="../demo/footable_list.html">footable表格(individual)</a>
+									</li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">树插件 <span class="caret"></span></a>
+								<ul role="menu" class="dropdown-menu">
+									<li><a href="../demo/jsTree.html">JSTree树</a>
+									</li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a aria-expanded="false" role="button" href="../demo/changePassword.html" class="dropdown-toggle" > 表单验证 </a>
+							</li>
+							<li class="dropdown">
+								<a aria-expanded="false" role="button" href="../demo/user.html" class="dropdown-toggle" > 个人中心 </a>
+							</li>
+						</ul>
+						<ul class="nav navbar-top-links navbar-right">
+							<li>
+								<a href="../../syslogin.html">
+									<i class="fa fa-sign-out"></i> 退出
+								</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+			<!-- begin content -->
+			<div class="row" style="margin-top:5px">
+				<div class="row">
+					<!-- col begin -->
+					<div class="col-md-12 col-sm-12">
+						<div class="ibox float-e-margins">
+							<div class="ibox-title">
+								<div class="row">
+									<div class="col-md-2 col-sm-2">
+										<h5>footable表格 <small>可隐藏列</small></h5>
+									</div>
+									<div class="col-md-10 col-sm-10">
+										<button class="btn-mini" type="button" id="fresh">刷新</button>
+									</div>
+								</div>
+							</div>
+							<div class="ibox-content" style="padding: 5px 5px 5px 5px;height:900px;">
+								<div class="project-list">
+									<table id="table_list1" data-filter="#recentSkimList" data-page-size="10" style="margin-bottom:10px;" class="table">
+										<thead>
+											<tr>
+												<th>编号</th>
+												<th>firstName</th>
+												<th>lastName</th>
+												<th>jobTitle</th>
+												<th data-hide="all">started</th>
+												<th data-hide="all">出生日期</th>
+												<th>操作</th>
+											</tr>
+										</thead>
+										<tbody data-bind="foreach:myRenSkimList">
+											<tr>
+												<td data-bind="text:id"></td>
+												<td data-bind="text: firstName"></td>
+												<td data-bind="text: lastName"></td>
+												<td data-bind="text: jobTitle"></td>
+												<td data-bind="text: startedOn"></td>
+												<td data-bind="text: dateOfBirth"></td>
+												<td>
+													<button class="btn btn-info btn-circle" data-bind="click: $parent.openDetailPage" type="button" data-toggle="tooltip" data-placement="left" title="浏览">
+														<i class="fa fa-sticky-note-o"></i>
+													</button>
+													<button class="btn btn-danger btn-circle btn-outline" data-bind="click: $parent.collectFavoriteList" type="button" data-toggle="tooltip" data-placement="left" title="收藏">
+														<i class="fa fa-heart"></i>
+													</button>
+													<button class="btn btn-success btn-circle" type="button" data-bind="click: $parent.downloadAchieve" data-toggle="tooltip" data-placement="left" title="下载">
+														<i class="fa fa-download"></i>
+													</button>
+												</td>
+											</tr>
+										</tbody>
+										<tfoot>
+											<tr>
+												<td colspan="5">
+													<ul class="pagination pull-right"></ul>
+												</td>
+											</tr>
+										</tfoot>
+									</table>
+								</div>
+							</div>
+						</div><!-- ibox end -->
+					</div><!-- col end -->
+
+					<!-- col begin -->
+					<!-- <div class="col-md-3 col-sm-3">
+						<div class="ibox float-e-margins">
+							<div class="ibox-title">
+								<h5>注解 <small>对footable的功能点做一个具体的说明</small></h5>
+							</div>
+							<div class="ibox-content" style="padding: 5px 5px 5px 5px;height:900px;">
+								<h5>class1 <small>class="table"</small></h5>
+								<h5>class2 <small>class="footable table table-stripped toggle-arrow-tiny"</small></h5>
+							</div>
+						</div><!-- ibox end -->
+					</div><!-- col end --> -->
+				</div>
+			</div><!-- end content -->
+			<div class="footer">
+				<div class="pull-right">
+					Powered By：<a href="http://www.jurassic.com.cn">jurassic.com.cn</a>
+				</div>
+				<div>
+					<strong>Copyright</strong> Jurassic &copy; 2016
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<script>
+		function initFootable(){
+			$("#table_list1").footable();
+		}
+		
+		var ViewModel = function () {
+			var self = this;
+			self.myRenSkimList = ko.observableArray(footableJson);
+	        //点击浏览按钮时打开详情展示页面（成果列表）
+	        self.openDetailPage = function ($parent) {
+	        };
+	        //打开收藏按钮时打开收藏文件夹（成果列表）
+	        self.collectFavoriteList = function ($parent) {
+	        };
+	        self.downloadAchieve = function ($parent) {
+	        }
+	        $('#table_list1').trigger('footable_redraw');
+	    };
+	    currentViewModel = new ViewModel();
+	    ko.applyBindings(currentViewModel);
+
+	    function redraw(){
+	    	$("#fresh").on('click', function(event) {
+	    		currentViewModel.myRenSkimList.removeAll();
+	    		for (var i = 0; i < footableChangedJson.length; i++) {
+	    			currentViewModel.myRenSkimList.push({
+	    				"id": footableChangedJson[i].id,
+	    				"firstName": footableChangedJson[i].firstName,
+	    				"lastName": footableChangedJson[i].lastName,
+	    				"jobTitle": footableChangedJson[i].jobTitle,
+	    				"startedOn": footableChangedJson[i].startedOn,
+	    				"dateOfBirth": footableChangedJson[i].dateOfBirth
+	    			});
+	    		}
+	    		$('#table_list1').trigger('footable_redraw');
+	    	});
+	    }
+	    $(document).ready(function($) {
+	    	initFootable();
+	    	ViewModel();
+	    	redraw();
+	    });
+
+	</script>
+
+</body>
+</html>

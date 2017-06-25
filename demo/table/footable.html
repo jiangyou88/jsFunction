@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" description="">
+	<script type="text/javascript" src="../scripts/js/common/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../scripts/css/common/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../scripts/css/common/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../scripts/css/common/font-awesome-ie7.min.css">
+	<link rel="stylesheet" type="text/css" href="../scripts/css/common/style.css">
+	<link rel="stylesheet" type="text/css" href="../scripts/css/plugins/jsTree/style.min.css">
+	<script type="text/javascript" src="../scripts/js/common/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../scripts/js/common/jquery.slimscroll.min.js"></script>
+	<script type="text/javascript" src="../scripts/js/common/jsTools.js"></script>
+	<link rel="stylesheet" type="text/css" href="../scripts/css/plugins/footable_bootstrap/footable.bootstrap.min.css">
+	<script type="text/javascript" src="../scripts/js/plugins/footable_bootstrap/footable.min.js"></script>
+	<script type="text/javascript" src="../scripts/js/plugins/knockout/knockout.js"></script>
+	<script type="text/javascript" src="../scripts/js/plugins/footable_bootstrap/footable_json.js"></script>
+	<title>JsTree</title>
+	
+</head>
+<body class="gray-bg top-navigation">
+	<!-- Editing Modal Markup -->
+	<div class="modal fade" id="editor-modal" tabindex="-1" role="dialog" aria-labelledby="editor-title">
+		<div class="modal-dialog" role="document">
+			<form class="modal-content form-horizontal" id="editor">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+					<h4 class="modal-title" id="editor-title">Add Row</h4>
+				</div>
+				<div class="modal-body">
+					<input type="number" id="id" name="id" class="hidden"/>
+					<div class="form-group required">
+						<label for="firstName" class="col-sm-3 control-label">First Name</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
+						</div>
+					</div>
+					<div class="form-group required">
+						<label for="lastName" class="col-sm-3 control-label">Last Name</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="jobTitle" class="col-sm-3 control-label">Job Title</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="jobTitle" name="jobTitle" placeholder="Job Title">
+						</div>
+					</div>
+					<div class="form-group required">
+						<label for="startedOn" class="col-sm-3 control-label">Started On</label>
+						<div class="col-sm-9">
+							<input type="date" class="form-control" id="startedOn" name="startedOn" placeholder="Started On" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="dob" class="col-sm-3 control-label">Date of Birth</label>
+						<div class="col-sm-9">
+							<input type="date" class="form-control" id="dob" name="dob" placeholder="Date of Birth">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="status" class="col-sm-3 control-label">Status</label>
+						<div class="col-sm-9">
+							<select class="form-control" id="status" name="status">
+								<option value="Active">Active</option>
+								<option value="Disabled">Disabled</option>
+								<option value="Suspended">Suspended</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">Save changes</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div id="wrapper" class="wrapper wrapper-content animated fadeInRight gray-bg" style="padding: 0px 0px;">
+		<div id="page-wrapper" class="gray-bg">
+			<div class="row border-bottom white-bg">
+				<nav class="navbar navbar-static-top" role="navigation">
+					<div class="navbar-header" style="width:40%;">
+						<img src="../scripts/img/logo-small.png" class="navbar-brand" style="padding: 10px 5px;" />
+						<a href="#" class="navbar-brand" style="font-weight: 600;font-size: 16px;padding: 15px 5px;">自定义后台主题UI框架</a>
+					</div>
+					<div class="navbar-collapse collapse" id="navbar">
+						<ul class="nav navbar-nav">
+							<li class="active">
+								<a aria-expanded="false" role="button" href="../demo/echarts.html">echarts图表</a>
+							</li>
+							<li class="dropdown">
+								<a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> 表格插件 <span class="caret"></span></a>
+								<ul role="menu" class="dropdown-menu">
+									<li><a href="../demo/footable.html">footable表格(bootstrap)</a>
+                                    </li>
+                                    <li><a href="../demo/footable_list.html">footable表格(individual)</a>
+                                    </li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">树插件 <span class="caret"></span></a>
+								<ul role="menu" class="dropdown-menu">
+									<li><a href="../demo/jsTree.html">JSTree树</a>
+									</li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a aria-expanded="false" role="button" href="../demo/changePassword.html" class="dropdown-toggle" > 表单验证 </a>
+							</li>
+							<li class="dropdown">
+								<a aria-expanded="false" role="button" href="../demo/user.html" class="dropdown-toggle" > 个人中心 </a>
+							</li>
+						</ul>
+						<ul class="nav navbar-top-links navbar-right">
+							<li>
+								<a href="../../syslogin.html">
+									<i class="fa fa-sign-out"></i> 退出
+								</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+			<!-- begin content -->
+			<div class="row" style="margin-top:5px">
+				<div class="row">
+					<!-- col begin -->
+					<div class="col-md-12 col-sm-12">
+						<div class="ibox float-e-margins">
+							<div class="ibox-title">
+								<h5>footable表格<small>带有增删改操作的表格</small></h5>
+							</div>
+							<div class="ibox-content" style="padding: 5px 5px 5px 5px;height:600px">
+								<!-- Table Markup -->
+								<table id="showcase-example-1" class="table table-hover" data-paging="true" data-filtering="true" data-sorting="true"  data-state="true" data-editing="true">
+									<thead>
+										<tr>
+											<th data-breakpoints="xs" name="id" title="ID" type="number" style="width:80px;">ID</th>
+											<th name="firstName">First Name</th>
+											<th name="lastName">Last Name</th>
+											<th data-breakpoints="xs" name="jobTitle">Job Title</th>
+											<th data-breakpoints="xs sm" name="started">Started On</th>
+											<th data-breakpoints="xs sm md" data-title="DOB" name="dob">Date of Birth</th>
+										</tr>
+									</thead>
+									<tbody data-bind="foreach:myRenSkimList">
+										<tr>
+											<td data-bind="text:id"></td>
+											<td data-bind="text: firstName"></td>
+											<td data-bind="text: lastName"></td>
+											<td data-bind="text: jobTitle"></td>
+											<td data-bind="text: startedOn"></td>
+											<td data-bind="text: dateOfBirth"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div><!-- ibox end -->
+					</div><!-- col end -->
+
+					<!-- col begin -->
+					<!-- <div class="col-md-3 col-sm-3">
+						<div class="ibox float-e-margins">
+							<div class="ibox-title">
+								<h5>注解  <small>对footable的功能点做一个具体的说明</small></h5>
+							</div>
+							<div class="ibox-content" style="padding: 15px 15px 15px 15px;height:500px">
+								<h5>样式  <small>是基于bootstrap样式的</small></h5>
+							</div>
+						</div><!-- ibox end -->
+					</div><!-- col end --> -->
+				</div>
+			</div><!-- end content -->
+			<div class="footer">
+				<div class="pull-right">
+					Powered By：<a href="http://www.jurassic.com.cn">jurassic.com.cn</a>
+				</div>
+				<div>
+					<strong>Copyright</strong> Jurassic &copy; 2016
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	
+
+	<script>
+		// 初始化对表格增删改查的操作
+		function initFootableEditing(){
+			var $modal = $('#editor-modal'),
+			$editor = $('#editor'),
+			$editorTitle = $('#editor-title'),
+			ft = FooTable.init('#showcase-example-1', {
+			// columns: $.get("../../content/columns.json"),
+			// rows: $.get("../../content/rows.json"),
+			editing: {
+				addRow: function(){
+					$modal.removeData('row');
+					$editor[0].reset();
+					$editorTitle.text('Add a new row');
+					$modal.modal('show');
+				},
+				editRow: function(row){
+					var values = row.val();
+					$editor.find('#id').val(values.id);
+					$editor.find('#firstName').val(values.firstName);
+					$editor.find('#lastName').val(values.lastName);
+					$editor.find('#jobTitle').val(values.jobTitle);
+					$editor.find('#status').val(values.status);
+					// $editor.find('#startedOn').val(values.started.format('YYYY-MM-DD'));
+					$editor.find('#startedOn').val(values.started);
+					// $editor.find('#dob').val(values.dob.format('YYYY-MM-DD'));
+					$editor.find('#dob').val(values.dob);
+					$modal.data('row', row);
+					$editorTitle.text('Edit row #' + values.id);
+					$modal.modal('show');
+				},
+				deleteRow: function(row){
+					if (confirm('Are you sure you want to delete the row?')){
+						row.delete();
+					}
+				}
+			}
+		}),
+			uid = 10001;
+			$editor.on('submit', function(e){
+				if (this.checkValidity && !this.checkValidity()) return;
+				e.preventDefault();
+				var row = $modal.data('row'),
+				values = {
+					id: $editor.find('#id').val(),
+					firstName: $editor.find('#firstName').val(),
+					lastName: $editor.find('#lastName').val(),
+					jobTitle: $editor.find('#jobTitle').val(),
+					started: $editor.find('#startedOn').val(),
+					dob: $editor.find('#dob').val(),
+					// started: moment($editor.find('#startedOn').val(), 'YYYY-MM-DD'),
+					// dob: moment($editor.find('#dob').val(), 'YYYY-MM-DD'),
+					status: $editor.find('#status option:selected').val()
+				};
+
+				if (row instanceof FooTable.Row){
+					row.val(values);
+				} else {
+					values.id = uid++;
+					ft.rows.add(values);
+				}
+				$modal.modal('hide');
+			});
+		}
+		var ViewModel = function () {
+			var self = this;
+			self.myRenSkimList = ko.observableArray(footableJson);
+			$('#showcase-example-1').trigger('footable_redraw');
+		};
+		currentViewModel = new ViewModel();
+		ko.applyBindings(currentViewModel);
+
+		$(document).ready(function($) {
+			initFootableEditing();
+			ViewModel();
+			
+		});
+	</script>
+
+</body>
+</html>

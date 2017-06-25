@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" description="">
+	<script type="text/javascript" src="../scripts/js/common/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../scripts/css/common/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../scripts/css/common/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../scripts/css/common/font-awesome-ie7.min.css">
+	<link rel="stylesheet" type="text/css" href="../scripts/css/common/style.css">
+	<link rel="stylesheet" type="text/css" href="../scripts/css/plugins/jsTree/style.min.css">
+	<script type="text/javascript" src="../scripts/js/common/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../scripts/js/plugins/jsTree/jstree.min.js"></script>
+	<script type="text/javascript" src="../scripts/js/common/jquery.slimscroll.min.js"></script>
+	<script type="text/javascript" src="../scripts/js/common/jsTools.js"></script>
+	<script type="text/javascript" src="../demodata/json/data-demo-jsTree.js"></script>
+	<title>JsTree</title>
+</head>
+<body class="gray-bg top-navigation">
+	<div id="wrapper" class="wrapper wrapper-content animated fadeInRight gray-bg" style="padding: 0px 0px;">
+		<div id="page-wrapper" class="gray-bg">
+			<div class="row border-bottom white-bg">
+				<nav class="navbar navbar-static-top" role="navigation">
+					<div class="navbar-header" style="width:40%;">
+						<img src="../scripts/img/logo-small.png" class="navbar-brand" style="padding: 10px 5px;" />
+						<a href="#" class="navbar-brand" style="font-weight: 600;font-size: 16px;padding: 15px 5px;">自定义后台主题UI框架</a>
+					</div>
+					<div class="navbar-collapse collapse" id="navbar">
+						<ul class="nav navbar-nav">
+							<li class="active">
+								<a aria-expanded="false" role="button" href="../demo/echarts.html">echarts图表</a>
+							</li>
+							<li class="dropdown">
+								<a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> 表格插件 <span class="caret"></span></a>
+								<ul role="menu" class="dropdown-menu">
+									<li><a href="../demo/footable.html">footable表格(bootstrap)</a>
+                                    </li>
+                                    <li><a href="../demo/footable_list.html">footable表格(individual)</a>
+                                    </li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">树插件 <span class="caret"></span></a>
+								<ul role="menu" class="dropdown-menu">
+									<li><a href="../demo/jsTree.html">JSTree树</a>
+									</li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a aria-expanded="false" role="button" href="../demo/changePassword.html" class="dropdown-toggle" > 表单验证 </a>
+							</li>
+							<li class="dropdown">
+								<a aria-expanded="false" role="button" href="../demo/user.html" class="dropdown-toggle" > 个人中心 </a>
+							</li>
+						</ul>
+						<ul class="nav navbar-top-links navbar-right">
+							<li>
+								<a href="../../syslogin.html">
+									<i class="fa fa-sign-out"></i> 退出
+								</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+			<!-- begin content -->
+			<div class="row" style="margin-top:5px">
+				<div class="row">
+					<!-- col begin -->
+					<div class="col-md-4 col-sm-4">
+						<div class="ibox float-e-margins">
+							<div class="ibox-title">
+								<div class="row">
+									<div class="col-md-6 col-sm-6">
+										<h5>基础树 <small>基础JSTree实例</small></h5>
+									</div>
+									<div class="col-md-6 col-sm-6">
+										<button class="btn-mini" type="button" id="baseTreeRefresh">刷新</button>
+									</div>
+								</div>
+							</div>
+							<div class="ibox-content" style="padding: 5px 5px 5px 5px;height:500px">
+								<div id="jstree_base_div"></div>
+							</div>
+						</div><!-- ibox end -->
+					</div><!-- col end -->
+
+					<!-- col begin -->
+					<div class="col-md-4 col-sm-4">
+						<div class="ibox float-e-margins">
+							<div class="ibox-title">
+								<div class="row">
+									<div class="col-md-8 col-sm-8">
+										<h5>多选树 <small>带有CheckBox的JSTree实例</small></h5>
+									</div>
+									<div class="col-md-4 col-sm-4">
+										<button class="btn-mini" type="button" id="checkBoxTreeChosen">选择的ID</button>
+									</div>
+								</div>
+							</div>
+							<div class="ibox-content" style="padding: 5px 5px 5px 5px;height:500px">
+								<div id="jstree_checkbox_div"></div>
+							</div>
+						</div><!-- ibox end -->
+					</div><!-- col end -->
+
+					<!-- col begin -->
+					<div class="col-md-4 col-sm-4">
+						<div class="ibox float-e-margins">
+							<div class="ibox-title">
+								<h5>拖拽树 <small>可拖拽的JSTree实例</small></h5>
+							</div>
+							<div class="ibox-content" style="padding: 5px 5px 5px 5px;height:500px">
+								<div id="jstree_drag_div"></div>
+							</div>
+						</div><!-- ibox end -->
+					</div><!-- col end -->
+				</div>
+			</div><!-- end content -->
+			<div class="footer">
+				<div class="pull-right">
+					Powered By：<a href="http://www.jurassic.com.cn">jurassic.com.cn</a>
+				</div>
+				<div>
+					<strong>Copyright</strong> Jurassic &copy; 2016
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<style>
+		.jstree-open > .jstree-anchor > .fa-folder:before {
+			content: "\f07c";
+		}
+
+		.jstree-default .jstree-icon.none {
+			width: 0;
+		}
+	</style>
+	<script type="text/javascript" src="../demo/jsTree.js"></script>
+
+</body>
+</html>

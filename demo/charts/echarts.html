@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" description="">
+	<script type="text/javascript" src="../scripts/js/plugins/echarts/echarts.min.js"></script>
+
+	<!-- hplus框架需要引入的文件start -->
+	<script type="text/javascript" src="../scripts/js/common/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../scripts/css/common/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../scripts/css/common/style.css">
+	<script type="text/javascript" src="../scripts/js/common/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../scripts/js/common/jquery.slimscroll.min.js"></script>
+    <script type="text/javascript" src="../scripts/js/common/jsTools.js"></script>
+	<!-- end -->
+	<title>echarts</title>
+</head>
+<body class="gray-bg top-navigation pace-done">
+	<div id="wrapper" class="wrapper wrapper-content animated fadeInRight gray-bg" style="padding: 0px 0px;">
+		<div id="page-wrapper" class="gray-bg">
+			<div class="row border-bottom white-bg">
+				<nav class="navbar navbar-static-top" role="navigation">
+					<div class="navbar-header" style="width:40%;">
+						<img src="../scripts/img/logo-small.png" class="navbar-brand" style="padding: 10px 5px;" />
+						<a href="#" class="navbar-brand" style="font-weight: 600;font-size: 16px;padding: 15px 5px;">自定义后台主题UI框架</a>
+					</div>
+					<div class="navbar-collapse collapse" id="navbar">
+						<ul class="nav navbar-nav">
+							<li class="active">
+								<a aria-expanded="false" role="button" href="../demo/echarts.html">echarts图表</a>
+							</li>
+							<li class="dropdown">
+								<a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> 表格插件 <span class="caret"></span></a>
+								<ul role="menu" class="dropdown-menu">
+									<li><a href="../demo/footable.html">footable表格(bootstrap)</a>
+                                    </li>
+                                    <li><a href="../demo/footable_list.html">footable表格(individual)</a>
+                                    </li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">树插件 <span class="caret"></span></a>
+								<ul role="menu" class="dropdown-menu">
+									<li><a href="../demo/jsTree.html">JSTree树</a>
+									</li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a aria-expanded="false" role="button" href="../demo/changePassword.html" class="dropdown-toggle" > 表单验证 </a>
+							</li>
+							<li class="dropdown">
+								<a aria-expanded="false" role="button" href="../demo/user.html" class="dropdown-toggle" > 个人中心 </a>
+							</li>
+						</ul>
+						<ul class="nav navbar-top-links navbar-right">
+							<li>
+								<a href="../demo/echarts.html">
+									<i class="fa fa-sign-out"></i> 退出
+								</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+			<!-- begin content -->
+			<div class="row">
+				<div class="row">
+					<div class="col-md-6 col-sm-6" style="margin-top:5px; margin-bottom:0px">
+						<div class="ibox float-e-margins">
+							<div class="ibox-title">
+								<h5>饼图 <small>基本类型饼图设置</small></h5>
+							</div>
+							<div class="ibox-content" style="padding: 5px 5px 0px 5px;">
+								<div id="customizedPie" style="height:270px;"></div>
+							</div>
+						</div><!-- ibox end -->
+					</div>
+
+					<div class="col-md-6 col-sm-6" style="margin-top:5px; margin-bottom:0px">
+						<div class="ibox float-e-margins">
+							<div class="ibox-title">
+								<h5>柱状图 <small>基本类型柱状图设置</small></h5>
+							</div>
+							<div class="ibox-content" style="padding: 5px 5px 0px 5px;">
+								<div id="bar" style="height:270px;"></div>
+							</div>
+						</div><!-- ibox end -->
+					</div>
+				</div>
+
+				<div class="row" style="margin-top:0px">
+					<div class="row">
+                            <div class="col-sm-4">
+                                <div class="ibox float-e-margins">
+                                    <div class="ibox-title">
+                                        <h5>最热浏览成果</h5>
+                                        <!-- <div class="ibox-tools">
+                                            <a class="collapse-link">
+                                                <i class="fa fa-chevron-up"></i>
+                                            </a>
+                                        </div> -->
+                                    </div>
+                                    <div class="ibox-content">
+                                        <table class="table table-hover no-margins">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width:45px">排名</th>
+                                                    <th>名称</th>
+                                                    <th style="width:65px">作者</th>
+                                                    <th style="width:100px">创建日期</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><span class="ibx-hotTop-rank current">1</span></td>
+                                                    <td><span>珠江口盆地白云凹陷沉</span></td>
+                                                    <td>李洪博</td>
+                                                    <td class="text-navy"><i class="fa fa-clock-o"></i> 2016-9-25</td>
+                                                </tr>
+                                               
+                                                <tr>
+                                                    <td><span class="ibx-hotTop-rank current">2</span></td>
+                                                    <td><span>运用油田规模序列法进行油气资源评价</span></td>
+                                                    <td>袁彩萍</td>
+                                                    <td class="text-navy"><i class="fa fa-clock-o"></i> 2016-9-25</td>
+                                                </tr>
+
+                                                 <tr>
+                                                    <td><span class="ibx-hotTop-rank current">3</span></td>
+                                                    <td><span>BAES盆地模拟评价系统及其在珠江口盆地的应用</span></td>
+                                                    <td>康永晓</td>
+                                                    <td class="text-navy"><i class="fa fa-clock-o"></i> 2016-9-24</td>
+                                                </tr>
+
+                                                 <tr>
+                                                    <td><span class="ibx-hotTop-rank">4</span></td>
+                                                    <td><span>珠江口盆地海相层序地层发育的控制因素分析</span></td>
+                                                    <td>王莹</td>
+                                                    <td class="text-navy"><i class="fa fa-clock-o"></i> 2016-9-23</td>
+                                                </tr>
+
+                                                 <tr>
+                                                    <td><span class="ibx-hotTop-rank">5</span></td>
+                                                    <td><span>North Sumatra盆地简介</span></td>
+                                                    <td>袁彩萍</td>
+                                                    <td class="text-navy"><i class="fa fa-clock-o"></i> 2016-9-22</td>
+                                                </tr>
+
+                                                 <tr>
+                                                    <td><span class="ibx-hotTop-rank">6</span></td>
+                                                    <td><span>珠江口盆地发育演化特征及其油气成藏地质条件</span></td>
+                                                    <td>李松峰</td>
+                                                    <td class="text-navy"><i class="fa fa-clock-o"></i> 2016-9-21</td>
+                                                </tr>
+
+                                                 <tr>
+                                                    <td><span class="ibx-hotTop-rank">7</span></td>
+                                                    <td><span>少井条件下富生烃凹陷油气资源评价</span></td>
+                                                    <td>耿威</td>
+                                                    <td class="text-navy"><i class="fa fa-clock-o"></i> 2016-9-20</td>
+                                                </tr>
+
+                                                 <tr>
+                                                    <td><span class="ibx-hotTop-rank">8</span></td>
+                                                    <td><span>惠州凹陷上文昌组资源量分布图</span></td>
+                                                    <td>李丙喜</td>
+                                                    <td class="text-navy"><i class="fa fa-clock-o"></i> 2016-9-19</td>
+                                                </tr>
+
+                                                 <tr>
+                                                    <td><span class="ibx-hotTop-rank">9</span></td>
+                                                    <td><span>惠州凹陷</span></td>
+                                                    <td>易雪斐</td>
+                                                    <td class="text-navy"><i class="fa fa-clock-o"></i> 2016-9-18</td>
+                                                </tr>
+
+                                                 <tr>
+                                                    <td><span class="ibx-hotTop-rank">10</span></td>
+                                                    <td><span>North Sumatra盆地沉积构造演化阶段</span></td>
+                                                    <td>张功成</td>
+                                                    <td class="text-navy"><i class="fa fa-clock-o"></i> 2016-9-17</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="ibox float-e-margins">
+                                    <div class="ibox-title">
+                                        <h5>最热下载成果</h5>
+                                        <!-- <div class="ibox-tools">
+                                            <a class="collapse-link">
+                                                <i class="fa fa-chevron-up"></i>
+                                            </a>
+                                        </div> -->
+                                    </div>
+                                    <div class="ibox-content">
+                                        <table class="table table-hover no-margins">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width:45px">排名</th>
+                                                    <th>名称</th>
+                                                    <th style="width:65px">作者</th>
+                                                    <th style="width:70px">浏览次数</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><span class="ibx-hotTop-rank current">1</span></td>
+                                                    <td><span>远砂坝测井相特征远砂坝测井相特征远砂坝测井相特征</span></td>
+                                                    <td>任振飞</td>
+                                                    <td class="text-navy"><i class="fa fa-level-up"></i> 8609</td>
+                                                </tr>
+                                               
+                                                <tr>
+                                                    <td><span class="ibx-hotTop-rank current">2</span></td>
+                                                    <td><span>席状砂微相测井曲线特征(XJ24-3-2X)_</span></td>
+                                                    <td>张彩霞</td>
+                                                    <td class="text-navy"><i class="fa fa-level-up"></i> 7341</td>
+                                                </tr>
+
+                                                 <tr>
+                                                    <td><span class="ibx-hotTop-rank current">3</span></td>
+                                                    <td><span>受潮汐影响的水下分流河道测井相特征</span></td>
+                                                    <td>崔立业</td>
+                                                    <td class="text-navy"><i class="fa fa-level-up"></i>6703</td>
+                                                </tr>
+
+                                                 <tr>
+                                                    <td><span class="ibx-hotTop-rank">4</span></td>
+                                                    <td><span>珠江口盆地海相层序地层发育的控制因素分析</span></td>
+                                                    <td>王丽菊</td>
+                                                    <td class="text-navy"><i class="fa fa-level-up"></i> 6892</td>
+                                                </tr>
+
+                                                 <tr>
+                                                    <td><span class="ibx-hotTop-rank">5</span></td>
+                                                    <td><span>North Sumatra盆地简介远砂坝测井相特征</span></td>
+                                                    <td>黄流</td>
+                                                    <td class="text-navy"><i class="fa fa-level-up"></i>6343</td>
+                                                </tr>
+
+                                                 <tr>
+                                                    <td><span class="ibx-hotTop-rank">6</span></td>
+                                                    <td><span>珠江口盆地发育演化特征及其油气成藏地质条件</span></td>
+                                                    <td>刘鹏</td>
+                                                    <td class="text-navy"><i class="fa fa-level-up"></i> 6237</td>
+                                                </tr>
+
+                                                 <tr>
+                                                    <td><span class="ibx-hotTop-rank">7</span></td>
+                                                    <td><span>MalayBasin盆地Ular3井基础数据</span></td>
+                                                    <td>王新</td>
+                                                    <td class="text-navy"><i class="fa fa-level-up"></i>5908 </td>
+                                                </tr>
+
+                                                 <tr>
+                                                    <td><span class="ibx-hotTop-rank">8</span></td>
+                                                    <td><span>惠州凹陷上文昌组资源量分布图</span></td>
+                                                    <td>李经纬</td>
+                                                    <td class="text-navy"><i class="fa fa-level-up"></i> 5712</td>
+                                                </tr>
+
+                                                 <tr>
+                                                    <td><span class="ibx-hotTop-rank">9</span></td>
+                                                    <td><span>分流河道测井相特征远砂坝测井相特征</span></td>
+                                                    <td>易雪斐</td>
+                                                    <td class="text-navy"><i class="fa fa-level-up"></i> 5654</td>
+                                                </tr>
+
+                                                 <tr>
+                                                    <td><span class="ibx-hotTop-rank">10</span></td>
+                                                    <td><span>水下分流河道测井相特征</span></td>
+                                                    <td>雨轩</td>
+                                                    <td class="text-navy"><i class="fa fa-level-up"></i> 5130</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="ibox float-e-margins">
+                                    <div class="ibox-title">
+                                        <h5>最新入库成果</h5>
+                                        <!-- <div class="ibox-tools">
+                                            <a class="collapse-link">
+                                                <i class="fa fa-chevron-up"></i>
+                                            </a>
+                                        </div> -->
+                                    </div>
+                                    <div class="ibox-content">
+                                        <table class="table table-hover no-margins">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width:45px">排名</th>
+                                                    <th>名称</th>
+                                                    <th style="width:65px">作者</th>
+                                                    <th style="width:70px">浏览次数</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><span class="ibx-hotTop-rank current">1</span></td>
+                                                    <td><span>远砂坝测井相特征远砂坝测井相特征远砂坝测井相特征</span></td>
+                                                    <td>任振飞</td>
+                                                    <td class="text-navy"><i class="fa fa-level-up"></i> 8609</td>
+                                                </tr>
+                                               
+                                                <tr>
+                                                    <td><span class="ibx-hotTop-rank current">2</span></td>
+                                                    <td><span>席状砂微相测井曲线特征(XJ24-3-2X)_</span></td>
+                                                    <td>张彩霞</td>
+                                                    <td class="text-navy"><i class="fa fa-level-up"></i> 7341</td>
+                                                </tr>
+
+                                                 <tr>
+                                                    <td><span class="ibx-hotTop-rank current">3</span></td>
+                                                    <td><span>受潮汐影响的水下分流河道测井相特征</span></td>
+                                                    <td>崔立业</td>
+                                                    <td class="text-navy"><i class="fa fa-level-up"></i>6703</td>
+                                                </tr>
+
+                                                 <tr>
+                                                    <td><span class="ibx-hotTop-rank">4</span></td>
+                                                    <td><span>珠江口盆地海相层序地层发育的控制因素分析</span></td>
+                                                    <td>王丽菊</td>
+                                                    <td class="text-navy"><i class="fa fa-level-up"></i> 6892</td>
+                                                </tr>
+
+                                                 <tr>
+                                                    <td><span class="ibx-hotTop-rank">5</span></td>
+                                                    <td><span>North Sumatra盆地简介远砂坝测井相特征</span></td>
+                                                    <td>黄流</td>
+                                                    <td class="text-navy"><i class="fa fa-level-up"></i>6343</td>
+                                                </tr>
+
+                                                 <tr>
+                                                    <td><span class="ibx-hotTop-rank">6</span></td>
+                                                    <td><span>珠江口盆地发育演化特征及其油气成藏地质条件</span></td>
+                                                    <td>刘鹏</td>
+                                                    <td class="text-navy"><i class="fa fa-level-up"></i> 6237</td>
+                                                </tr>
+
+                                                 <tr>
+                                                    <td><span class="ibx-hotTop-rank">7</span></td>
+                                                    <td><span>MalayBasin盆地Ular3井基础数据</span></td>
+                                                    <td>王新</td>
+                                                    <td class="text-navy"><i class="fa fa-level-up"></i>5908 </td>
+                                                </tr>
+
+                                                 <tr>
+                                                    <td><span class="ibx-hotTop-rank">8</span></td>
+                                                    <td><span>惠州凹陷上文昌组资源量分布图远砂坝测井相特征</span></td>
+                                                    <td>李经纬</td>
+                                                    <td class="text-navy"><i class="fa fa-level-up"></i> 5712</td>
+                                                </tr>
+
+                                                 <tr>
+                                                    <td><span class="ibx-hotTop-rank">9</span></td>
+                                                    <td><span>分流河道测井相特征</span></td>
+                                                    <td>易雪斐</td>
+                                                    <td class="text-navy"><i class="fa fa-level-up"></i> 5654</td>
+                                                </tr>
+
+                                                 <tr>
+                                                    <td><span class="ibx-hotTop-rank">10</span></td>
+                                                    <td><span>水下分流河道测井相特征</span></td>
+                                                    <td>雨轩</td>
+                                                    <td class="text-navy"><i class="fa fa-level-up"></i> 5130</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div><!-- end content -->
+            <div class="footer">
+            	<div class="pull-right">
+            		Powered By：<a href="http://www.jurassic.com.cn">jurassic.com.cn</a>
+            	</div>
+            	<div>
+            		<strong>Copyright</strong> Jurassic &copy; 2016
+            	</div>
+            </div>
+
+        </div>
+    </div>
+    <script type="text/javascript" src="../demo/echarts.js"></script>
+</body>
+</html>
